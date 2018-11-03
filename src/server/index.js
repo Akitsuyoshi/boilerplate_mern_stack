@@ -4,8 +4,8 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 
 const app = express();
+const port = process.env.PORT || 3000;
 const publicPath = path.resolve(__dirname, '..', '..', 'public');
-const port = 3000;
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -27,11 +27,6 @@ app.get('/api', (req, res) => {
 
 // It serves any static files
 app.use(express.static(publicPath));
-// It handles react routing, return all requrests to React app
-// app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../../', 'public/index.html')));
-
-app.listen(port, () => {
-  console.log(`MERN Boilerplate listening on port ${port}!`);
-});
+app.set('port', port);
 
 export default app;
