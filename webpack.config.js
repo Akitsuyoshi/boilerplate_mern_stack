@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production';
 // Helper vars to refer to each file
 const paths = {
   entry: path.resolve(__dirname, 'src', 'client', 'index.js'),
@@ -12,11 +13,14 @@ const paths = {
   contentBase: path.join(__dirname, 'public'),
 };
 
-module.exports = {
+const webpackConfig = {
   entry: ['babel-polyfill', paths.entry],
   output: {
     filename: 'bundle.js',
     path: paths.dest,
+    publicPath: '/',
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json',
   },
   module: {
     rules: [
@@ -77,9 +81,15 @@ module.exports = {
     contentBase: paths.contentBase,
     compress: true, // enable gzip compression
     hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+    inline: true,
+    port: 8080,
+    host: '0.0.0.0',
   },
+  // watchOptions: {
+  //   aggregateTimeout: 300,
+  //   poll: 6000,
+  // },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new UglifyJsPlugin({
       test: /\.js$/,
     }),
@@ -88,3 +98,11 @@ module.exports = {
     }),
   ],
 };
+
+// dev
+if (!isProd) {
+  webpackConfig.entry.unshift('webpack/hot/only-dev-server');
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
+module.exports = webpackConfig;
