@@ -4,21 +4,23 @@ import ReactDOM from 'react-dom';
 
 class App extends Component {
   componentDidMount() {
-    console.log('aftetr componet');
+    console.log('aftetasdfrsdf t');
   }
 
   render() {
     return (
       <div>
-        <h1>as</h1>
+        <button className="prettier-class" id="prettier-id" type="submit">
+          Click Here
+        </button>
+        <h1>asdfsdfffa</h1>
       </div>
     );
   }
 }
-ReactDOM.render(
-  <App />,
-  document.getElementById('app'),
-);
+ReactDOM.render(<App />, document.getElementById('app'));
 
 // does it need?
-module.hot.accept();
+if (module.hot) {
+  module.hot.accept();
+}
