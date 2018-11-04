@@ -11,7 +11,7 @@
     "prestart": "yarn build",
     "prepublishOnly": "yarn run build",
     "build": "webpack --config webpack.config.js --mode production",
-    "test": "jest --config=jest.json",
+    "test": "jest --config=jest.json"
   },
   "author": "Akitsuyoshi",
   "license": "ISC",
