@@ -15,17 +15,17 @@
       }
     },
     "rules": {
-      "import/no-extraneous-dependencies": ["error",{ "devDependencies": true }
-      ],
+      "import/no-extraneous-dependencies": 0,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "no-console":0,
-      "arrow-parens": "off",
-		  "object-curly-newline": "off",
-		  "no-mixed-operators": "off",
-		  "function-paren-newline": "off",
-		  "no-plusplus": "off",
+      "comma-dangle": 0,
+      "arrow-parens": 0,
+		  "object-curly-newline": 0,
+		  "no-mixed-operators": 0,
+		  "function-paren-newline": 0,
+		  "no-plusplus": 0,
       "space-before-function-paren": 0,
-      "react/no-unused-prop-types": "off",
+      "react/no-unused-prop-types": 0,
       "react/jsx-one-expression-per-line": false,
       "prettier/prettier": ["error"]
     }

@@ -20,7 +20,7 @@ if (cluster.isMaster && isProd) {
       if (maxWorkerCrashes <= 0) {
         console.error('Too many worker crashes');
         // kill the cluster, let supervisor restart it
-        process.exit(1);
+        process.exit();
       } else {
         cluster.fork();
       }
